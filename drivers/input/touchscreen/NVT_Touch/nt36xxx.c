@@ -1245,7 +1245,7 @@ static void nvt_ts_work_func(struct work_struct *work)
 	}
 // Huaqin add for ZQL1820-517. by zhengwu.lu. at 2018/09/12  end
 #if WAKEUP_GESTURE
-	if (bTouchIsAwake == 0) {
+	if (unlikely(bTouchIsAwake == 0)) {
 		input_id = (uint8_t)(point_data[1] >> 3);
 		nvt_ts_wakeup_gesture_report(input_id, point_data);
 		enable_irq(ts->client->irq);
