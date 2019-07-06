@@ -875,12 +875,6 @@ EXPORT_SYMBOL(cpu_isolated_mask);
  */
 #define LITTLE_CPU_MASK ((1UL << (NR_CPUS / 2)) - 1)
 #define BIG_CPU_MASK    (((1UL << NR_CPUS) - 1) & ~LITTLE_CPU_MASK)
-static const unsigned long little_cluster_cpus = LITTLE_CPU_MASK;
-const struct cpumask *const cpu_lp_mask = to_cpumask(&little_cluster_cpus);
-EXPORT_SYMBOL(cpu_lp_mask);
-
-static const unsigned long big_cluster_cpus = BIG_CPU_MASK;
-const struct cpumask *const cpu_perf_mask = to_cpumask(&big_cluster_cpus);
 
 #if CONFIG_LITTLE_CPU_MASK
 static const unsigned long lp_cpu_bits = CONFIG_LITTLE_CPU_MASK;
